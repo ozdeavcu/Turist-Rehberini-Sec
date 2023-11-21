@@ -1,0 +1,149 @@
+﻿@model rehbersorgulama.Models.tbl_rehber
+@{
+    ViewBag.Title = "profil";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+
+
+}
+
+<div class="pagetitle">
+    <h1>Profile</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Ayarlar</a></li>
+            <li class="breadcrumb-item">Profil</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section profile">
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                    <img src="@Model.fotograf" alt="Profile" class="rounded-circle">
+                    <h2>@Model.adsoyad</h2>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-8">
+            <div class="card">
+                <div class="card-body pt-3">
+                    <!-- Bordered Tabs -->
+                    <ul class="nav nav-tabs nav-tabs-bordered">
+
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Bilgilerim</button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Bilgileri Güncelle</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content pt-2">
+                        <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            <h5 class="card-title">Hakkımda</h5>
+                            <p class="small fst-italic">@Model.cv_aciklama</p>
+
+                            <h5 class="card-title">Profil Detay</h5>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label ">Ad Soyad</div>
+                                <div class="col-lg-9 col-md-8">@Model.adsoyad</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Yaş</div>
+                                <div class="col-lg-9 col-md-8">@Model.yas</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Çalışma Saati Başlangıç</div>
+                                <div class="col-lg-9 col-md-8">@Model.baslama_saati</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Çalışma Saati Bitiş</div>
+                                <div class="col-lg-9 col-md-8">@Model.bitis_saati</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Fiyat</div>
+                                <div class="col-lg-9 col-md-8">@Model.fiyat @Model.parabirimi</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Email</div>
+                                <div class="col-lg-9 col-md-8">@Model.email</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                            <!-- Profile Edit Form -->
+                            <form action="~/Admin/profil" method="post" enctype="multipart/form-data" role="form">
+                                @Html.HiddenFor(p => p.rehber_id)
+                                <div class="row mb-3">
+                                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Fotoğrafı</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <img src="@Model.fotograf" alt="Profile">
+                                        <div class="pt-2">
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="file" name="fileuploader">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="about" class="col-md-4 col-lg-3 col-form-label">Hakkımda</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <textarea name="cv_aciklama" class="form-control" id="about" style="height: 100px">@Model.cv_aciklama</textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Yaş</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="yas" type="number" class="form-control" id="company" value="@Model.yas" max="50" min="18">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Çalışma Saati Başlangıç</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="baslama_saati" type="time" class="form-control" value="@Model.baslama_saati">
+                                    </div>
+                                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Çalışma Saati Bitiş</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="bitis_saati" type="time" class="form-control" value="@Model.bitis_saati">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Country" class="col-md-4 col-lg-3 col-form-label">Fiyat</label>
+                                    <div class="col-md-4 col-lg-6">
+                                        <input name="fiyat" type="number" class="form-control" value="@Model.fiyat" min="100" max="1000">
+                                        <input class="form-check-input" type="radio" name="parabirimi" id="exampleRadios2" value="$" checked>
+                                        <label class="form-check-label" for="exampleRadios2">
+                                            $
+                                        </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input class="form-check-input" type="radio" name="parabirimi" id="exampleRadios2" value="€">
+                                        <label class="form-check-label" for="exampleRadios2">€</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="email" type="email" class="form-control" value="@Model.email">
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                                </div>
+                            </form><!-- End Profile Edit Form -->
+                        </div>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

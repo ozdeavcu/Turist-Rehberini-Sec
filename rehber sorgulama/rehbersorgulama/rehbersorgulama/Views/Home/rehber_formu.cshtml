@@ -1,0 +1,228 @@
+﻿@using rehbersorgulama.Models
+@{
+    ViewBag.Title = "rehber_formu";
+    Layout = "~/Views/Shared/default_layout.cshtml";
+}
+<style>
+    #common_banner {
+        background-image: url('/Content/img/banner/banner5.png');
+        padding: 200px 0 130px 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<!-- Common Banner Area -->
+<section id="common_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="common_bannner_text">
+                    <h2>Rehber Formu</h2>
+                    <ul>
+                        <li><a href="~/Home/Index">Anasayfa</a></li>
+                        <li><span><i class="fas fa-circle"></i></span>Turist Rehberini Seç</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Vendor Form Area -->
+<section id="vendor_form_area" class="section_padding_bottom" style="margin-top:30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="vendor_form_heading">
+                    <h2>Turist Rehberini Seç</h2>
+                    
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="vendor_form">
+                    <div class="tour_booking_form_box">
+                        <form action="/Home/rehber_formu" method="post" id="tour_bookking_form_item">
+                            <input type="hidden" name="submitTime" id="submitTime" />
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg_input" placeholder="Ad Soyad" required name="adsoyad" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control bg_input" placeholder="Telefon" name="telefon"  maxlength="11" pattern="\d{3}-\d{3}-\d{4}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control bg_input" name="email"
+                                               placeholder="Email*" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control bg_input" name="yas"
+                                               placeholder="Yaş*" min="18" max="70" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        Cinsiyet:
+                                        <select class="form-control form-select bg_input" name="cinsiyet">
+                                            <option value="true">Kız</option>
+                                            <option value="false">Erkek</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        Konuştuğunuz Dil:
+
+                                        <select class="form-control form-select bg_input" name="dil_no" required>
+                                            @if (ViewBag.diller != null)
+                                            {
+                                                foreach (var item in ViewBag.diller as List<tbl_dil>)
+                                                {
+                                                    <option value="@item.dil_id">@item.dil_ad</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="">Şu anda dil seçemezsiniz</option>
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        Ülke:
+                                        <select class="form-control form-select bg_input" name="ulke_no" required>
+                                            @if (ViewBag.ulkeler != null)
+                                            {
+                                                foreach (var item in ViewBag.ulkeler as List<tbl_ulke>)
+                                                {
+                                                    <option value="@item.ulke_id">@item.ulke_ad</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="">Şu anda ülke seçemezsiniz</option>
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        Gezmek İstediğiniz İlçe:
+                                        <select class="form-control form-select bg_input" name="ilce_no" id="ilce" required>
+                                            <option accesskey="">İlçe Seçiniz</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        Seçtiğiniz İlin Rehber Listesi:
+                                        <select class="form-control form-select bg_input" name="rehber_id" id="rehber" disabled required>
+                                            <option accesskey="">Rehber Seçiniz</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        Yanınızda Kaç Kişi Getireceksiniz?
+                                        <input type="number" class="form-control bg_input" name="kisi_sayisi" min="0" max="5"
+                                               placeholder="Kaç Kişi?*" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        Gezmek İstediğiniz Tarih:
+                                        <input type="date" class="form-control bg_input" name="tarih"
+                                               placeholder="Tarih*" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="booking_tour_form_submit pt-4">
+                          
+                                <button class="btn btn-primary">Formu Gönder</button>
+                            </div>
+                        </form>                                   
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="vendor_img">
+                    <img src="~/Content/img/vendor.png" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function () {
+        $.ajaxSetup({
+            type: "post",
+            url: "/Home/GetRehberler",
+            dataType: "json"
+        });
+        $.extend({
+            ilceGetir: function () {
+                $.ajax({
+                    data: { "tip": "ilceGetir" },
+                    success: function (sonuc) {
+                        $("#ilce option").remove(); // İlçe seçeneklerini temizle
+                        $("#ilce").append('<option value="">İlçe Seçiniz</option>'); // İlçe seçeneklerini sıfırla
+                        if (sonuc.ok) {
+                            $.each(sonuc.text, function (index, item) {
+                                var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                $("#ilce").append(optionhtml);
+                            });
+                        } else {
+                            $.each(sonuc.text, function (index, item) {
+                                var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                $("#ilce").append(optionhtml);
+                            });
+                        }
+                    }
+                });
+            },
+            rehberGetir: function (ilce_id) {
+                $.ajax({
+                    data: { "ilce_id": ilce_id, "tip": "rehberGetir" }, // "ilceGetir" yerine "rehberGetir" kullanılmalı
+                    success: function (sonuc) {
+                        $("#rehber option").remove();
+                        $("#rehber").append('<option value="">Rehber Seçiniz</option>'); // Rehber seçeneklerini sıfırla
+                        if (sonuc.ok) {
+                            $("#rehber").prop("disabled", false);
+                            $.each(sonuc.text, function (index, item) {
+                                var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                $("#rehber").append(optionhtml);
+                            });
+                        } else {
+                            $.each(sonuc.text, function (index, item) {
+                                var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                $("#rehber").append(optionhtml);
+                            });
+                        }
+                    }
+                });
+            }
+        });
+
+        //ilgetirimizi çalıştıyoruz
+        $.ilceGetir();
+        //il selectimizde değişiklik olduğunda çalışacak func
+        $("#ilce").on("change", function () {
+            var ilce_id = $(this).val();
+            $.rehberGetir(ilce_id);
+        });
+    });  
+</script>
+<script>
+    document.getElementById("submitTime").value = new Date().toISOString();
+</script>
+

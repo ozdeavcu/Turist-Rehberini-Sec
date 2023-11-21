@@ -1,0 +1,71 @@
+﻿@model rehbersorgulama.Models.tbl_kullanici
+@{
+    ViewBag.Title = "musteri_detay";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+}
+<section class="section profile">
+    <div class="row">
+        <div class="col-xxl-8">
+            <div class="card">
+                <div class="card-body pt-3">
+                    <div class="tab-content pt-3">
+                        <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            <h5 class="card-title">Kullanıcı Detay</h5>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label ">Ad Soyad</div>
+                                <div class="col-lg-9 col-md-8">@Model.adsoyad</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Yaş</div>
+                                <div class="col-lg-9 col-md-8">@Model.yas</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Email</div>
+                                <div class="col-lg-9 col-md-8">@Model.email</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Telefon</div>
+                                <div class="col-lg-9 col-md-8">@Model.telefon</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Gezmek İstediği Yer</div>
+                                <div class="col-lg-9 col-md-8">@Model.tbl_ilce.ilce_ad</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Ülkesi</div>
+                                <div class="col-lg-9 col-md-8">@Model.tbl_ulke.ulke_ad</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Kişi Sayısı</div>
+                                <div class="col-lg-9 col-md-8">@Model.kisi_sayisi</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Cinsiyet</div>
+                                @if (Model.cinsiyet == true)
+                                {
+                                    <div class="col-lg-9 col-md-8">Kız</div>
+                                }
+                                else
+                                {
+                                    <div class="col-lg-9 col-md-8">Erkek</div>
+
+                                }
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Konuştuğu Dil</div>
+                                <div class="col-lg-9 col-md-8">@Model.tbl_dil.dil_ad</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Gezmek İstediği Tarih</div>
+                                <div class="col-lg-9 col-md-8">@Model.tarih.Value.ToShortDateString()</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>

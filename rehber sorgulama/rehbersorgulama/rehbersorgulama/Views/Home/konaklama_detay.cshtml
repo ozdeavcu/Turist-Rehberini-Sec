@@ -1,0 +1,128 @@
+﻿@using rehbersorgulama.Models
+@model List<tbl_otel>
+@{
+    ViewBag.Title = "konaklama_detay";
+    Layout = "~/Views/Shared/default_layout.cshtml";
+}
+
+
+<style>
+    #common_banner {
+        background-image: url('/Content/img/banner/banner5.png');
+        padding: 200px 0 130px 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<!-- Common Banner Area -->
+<section id="common_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="common_bannner_text">
+                    <h2>@ViewBag.sehirad Otel</h2>
+                    <ul>
+                        <li><a href="~/Home/Index">Anasayfa</a></li>
+                        <li><span><i class="fas fa-circle"></i></span>@ViewBag.sehirad</li>
+                        <li><span><i class="fas fa-circle"></i></span>Konaklama</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Flight Search Areas -->
+<section id="explore_area" class="section_padding">
+    <div class="container">
+        <!-- Section Heading -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="section_heading_center">
+                    <h2>@ViewBag.otelsayi Otel </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="left_side_search_area">
+                    <div class="left_side_search_boxed">
+                        <div class="item_searc_map_area">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.6962663570607!2d89.56355961427838!3d22.813715829827952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ff901efac79b59%3A0x5be01a1bc0dc7eba!2sAnd+IT!5e0!3m2!1sen!2sbd!4v1557901943656!5m2!1sen!2sbd"></iframe>
+                        </div>
+                    </div>
+                    <div class="left_side_search_boxed">
+                        <div class="left_side_search_heading">
+                            <h5>Search by name</h5>
+                        </div>
+                        <div class="name_search_form">
+                            <input type="text" class="form-control" placeholder="e.g Deluxe bus">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+         
+   
+        
+              
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="cruise_search_result_wrapper">
+                            @foreach (var item in Model)
+                            {
+                                <div class="cruise_search_item">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="cruise_item_img">
+                                                <img src="@item.fotograf" alt="img" style="width:330px; height:280px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="cruise_item_inner_content">
+                                                <div class="cruise_content_top_wrapper">
+                                                    <div class="cruise_content_top_left">
+                                                        <ul>
+                                                            <li>@item.gun <i class="fas fa-circle"></i></li>
+                                                            <li>Aile Turu</li>
+                                                        </ul>
+                                                        <h4>@item.otel_ad</h4>
+                                                        <p><i class="fas fa-map-marker-alt"></i>@item.konum</p>
+                                                    </div>
+                                            
+                                                </div>
+                                          
+                                                <div class="cruise_content_bottom_wrapper">
+                                                    <div class="cruise_content_bottom_left">
+                                                        <ul>
+                                                            <li>Kahvaltı</li>
+                                                            <li>Wi-fi</li>
+                                                            <li>Rehberlik Hizmeti</li>
+                                                            <li>Konaklama</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="cruise_content_bottom_right">
+                                                        <a href="@item.weburl" class="btn btn_theme btn_md">Daha Fazla</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

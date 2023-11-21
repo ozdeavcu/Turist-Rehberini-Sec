@@ -1,0 +1,236 @@
+﻿@using rehbersorgulama.Models
+@{
+    ViewBag.Title = "sehiricerik_detay";
+    Layout = "~/Views/Shared/default_layout.cshtml";
+}
+
+<style>
+    #common_banner {
+        background-image: url('/Content/img/banner/banner5.png');
+        padding: 200px 0 130px 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #container {
+        margin: 0 auto;
+        width: 80%;
+        font-family: verdana,arial,sans-serif;
+        font-size: 16px;
+    }
+
+    #modalWindow {
+        position: fixed;
+        font-family: arial,helvetica, sans-serif;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 99999;
+        opacity: 0;
+        transition: opacity 400ms linear;
+        pointer-events: none;
+    }
+
+        #modalWindow:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #modalWindow > div {
+            width: 400px;
+            height: 240px;
+            position: relative;
+            margin: 10% auto;
+            padding: 20px 20px 13px 20px;
+            border: solid;
+            border-color: black;
+            border-width: 2px;
+            background: #DAF7A6;
+            border-radius: 10px;
+        }
+</style>
+<!-- Common Banner Area -->
+<section id="common_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="common_bannner_text">
+                    <h2>@ViewBag.sehirad</h2>
+                    <ul>
+                        <li><a href="~/Home/Index">Anasayfa</a></li>
+                        <li><span><i class="fas fa-circle"></i></span>@ViewBag.sehirad</li>
+                        <li><span><i class="fas fa-circle"></i></span>Aktiviteler Ve Daha Fazlası</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Explore our hot deals -->
+<section id="explore_area" class="section_padding_top">
+    <div class="container">
+        <!-- Section Heading -->
+
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="theme_nav_tab">
+                    <nav class="theme_nav_tab_item">
+                        <div class="nav nav-tabs" id="nav-tab1" role="tablist">
+                            <button class="nav-link active" id="nav-hotels-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-hotels" type="button" role="tab" aria-controls="nav-hotels"
+                                    aria-selected="true">
+                                Tarihi Yerler
+                            </button>
+                            <button class="nav-link" id="nav-tours-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-tours" type="button" role="tab" aria-controls="nav-tours"
+                                    aria-selected="false">
+                                Aktiviteler
+                            </button>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-hotels" role="tabpanel"
+                         aria-labelledby="nav-hotels-tab">
+                        <div class="row">
+
+                            @foreach (var item in ViewBag.tarihiyerler as List<tbl_tarihiyerler>)
+                            {
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                                    <div class="theme_common_box_two img_hover">
+                                        <div class="theme_two_box_img">
+                                            <a href="#" class="popup-link" data-modal-id="modalWindow_@item.tarihi_id">
+                                                <img src="@item.fotograf" alt="img" style="width:350px; height:200px;">
+                                            </a>
+                                            <p><i class="fas fa-map-marker-alt"></i>@item.konum</p>
+                                        </div>
+                                        <div class="theme_two_box_content">
+                                            <a href="" class="popup-link" data-modal-id="modalWindow_@item.tarihi_id"><h4>@item.adi</h4></a>
+                                        </div>
+                                    </div>
+
+                                    <div id="modalWindow_@item.tarihi_id" class="modal">
+                                        <div class="modal-content">
+                                            <a href="#" class="close">Kapat X</a><br>
+                                            <p>@item.aciklama</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="nav-tours" role="tabpanel" aria-labelledby="nav-tours-tab">
+                        <div class="row">
+                            @foreach (var item in ViewBag.aktivite as List<tbl_aktivite>)
+                            {
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                                    <div class="theme_common_box_two img_hover">
+                                        <div class="theme_two_box_img">
+                                            <a href="#" class="popup-link" data-modal-id="modalWindow_@item.activite_id">
+                                                <img src="@item.fotograf" alt="img" style="width:350px; height:200px;">
+                                            </a>
+                                            <p><i class="fas fa-map-marker-alt"></i>@item.tbl_ilce.ilce_ad,Turkey</p>
+                                        </div>
+                                        <div class="theme_two_box_content">
+                                            <a href="" class="popup-link" data-modal-id="modalWindow_@item.activite_id"><h4>@item.aktivite_adi</h4></a>
+                                        </div>
+                                    </div>
+                                    <div id="modalWindow_@item.activite_id" class="modal">
+                                        <div class="modal-content">
+                                            <a href="#" class="close">Kapat X</a><br>
+                                            <p>@item.aciklama</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Customer Area -->
+<section id="customer_reviews" class="section_padding_bottom">
+    <div class="container">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="section_heading_center">
+                <h2>@ViewBag.sehirad Rehberleri</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in ViewBag.rehberler as List<vw_rehber_bilgi_getir>)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="all_review_box">
+
+                        <div class="all_review_text">
+                            <a href="~/Home/rehber_detay/@item.rehber_id">
+                                <img src="@item.fotograf" alt="img">
+                            </a>
+                            <a href="~/Home/rehber_detay/@item.rehber_id">
+                                <h4>@item.adsoyad</h4>
+                            </a>
+                            @if (item.cv_aciklama == null)
+                            {
+                                <p>
+                                    @item.cv_aciklama..
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    @item.cv_aciklama.Substring(0, 170) ..
+                                </p>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".popup-link").click(function (e) {
+            e.preventDefault();
+            var modalId = $(this).data("modal-id");
+            $("#" + modalId).fadeIn();
+        });
+
+        $(".close").click(function () {
+            $(".modal").fadeOut();
+        });
+    });
+</script>

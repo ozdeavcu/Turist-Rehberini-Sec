@@ -1,0 +1,62 @@
+﻿@using rehbersorgulama.Models
+@model List<rehber_dil_detay>
+@{
+    ViewBag.Title = "dil_listele";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+    int sayi = 0;
+}
+
+<a href="~/Admin/dilEkle/@Session["rehber_id"]" class="btn btn-warning col-xxl-2">DİL EKLE</a>
+
+<br />
+<br />
+<br />
+<br />
+<table id="tbl1" class="table table-light table-hover">
+    <thead style="color:black;">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Dil</th>
+            <th scope="col">Dil Seviye</th>
+            <th scope="col">GÜNCELLE</th>
+            <th scope="col">SİL</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Aktif == true)
+            {
+                sayi++;
+
+                <tr>
+                    <td>@sayi</td>
+                    <td>@item.tbl_dil.dil_ad </td>
+                    <td>@item.tbl_dilseviye.dil_seviye</td>
+
+                    <td>
+                        <a href="~/Admin/dilGuncelle/@item.id" class="btn btn-primary">GÜNCELLE</a>
+                    </td>
+                    <td>
+                        <a href="~/Admin/dilSil/@item.id" class="btn btn-danger" onclick="return confirm('Kayıt Silinsin mi')">SİL</a>
+                    </td>
+                </tr>
+
+            }
+
+        }
+
+    </tbody>
+</table>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+
+
+

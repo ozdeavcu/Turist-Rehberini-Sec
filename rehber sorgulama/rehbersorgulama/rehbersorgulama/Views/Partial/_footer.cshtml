@@ -1,0 +1,117 @@
+﻿<!-- Cta Area -->
+<section id="cta_area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="cta_left">
+                    <div class="cta_icon">
+                        <img src="/Content/img/common/email.png" alt="icon">
+                    </div>
+                    <div class="cta_content">
+
+                        <h2>Email</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="cat_form">
+                    <form id="cta_form_wrappper">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Mail Adresi..."><button class="btn btn_theme btn_md"
+                                                                        type="button">
+                                Gönder
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer  -->
+<footer id="footer_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="footer_heading_area">
+                    <h5>Need any help?</h5>
+                </div>
+                <div class="footer_first_area">
+                    <div class="footer_inquery_area">
+                        <h5>Telefon</h5>
+                        <h3> <a href="tel:+00-123-456-789">+00 123 456 789</a></h3>
+                    </div>
+                    <div class="footer_inquery_area">
+                        <h5>Email</h5>
+                        <h3> <a href="mailto:support@domain.com">support@domain.com</a></h3>
+                    </div>
+                    <div class="footer_inquery_area">
+                        <h5>Follow us on</h5>
+                        <ul class="soical_icon_footer">
+                            <li><a href="#!"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-2 col-md-6 col-sm-6 col-12">
+                <div class="footer_heading_area">
+                    <h5>Gezilecek Yerler</h5>
+                </div>
+                <div class="footer_link_area">
+                    <ul>
+                        @foreach (var item in ViewBag.ilcead as List<rehbersorgulama.Models.tbl_ilce>)
+                        {
+                            <li><a href="~/Home/sehiricerik_detay/@item.ilce_id">@item.ilce_ad</a></li>
+
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+                <div class="footer_heading_area">
+                    <h5>Destek</h5>
+                </div>
+                <div class="footer_link_area">
+                    <ul>
+                        <li><a href="http://t.me/Turistrehberbot">GeoGine Konum Yardımı</a></li>
+            
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+                <div class="footer_heading_area">
+                    <h5>Diğer</h5>
+                </div>
+                <div class="footer_link_area">
+                    <ul>
+                        <li><a href="~/Home/girisyap">Giriş Yap</a></li>
+                        <li><a href="~/Home/kaydol">Kaydol</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+<div class="copyright_area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="co-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="copyright_left">
+                    <p>Copyright © Turist Rehberini Seç</p>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+</div>
+<div class="go-top">
+    <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
+</div>
+

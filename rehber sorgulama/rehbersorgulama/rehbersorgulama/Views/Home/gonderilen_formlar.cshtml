@@ -1,0 +1,111 @@
+﻿@model rehbersorgulama.Models.tbl_kullanici
+@{
+    ViewBag.Title = "gonderilen_formlar";
+    Layout = "~/Views/Shared/default_layout.cshtml";
+    int sayi = 0;
+}
+
+
+
+
+<style>
+    #common_banner {
+        background-image: url('/Content/img/banner/banner5.png');
+        padding: 200px 0 130px 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<!-- Common Banner Area -->
+<section id="common_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="common_bannner_text">
+                    <h2>Gönderilen Formlar</h2>
+                    <ul>
+                        <li><a href="~/Home/Index">Anasayfa</a></li>
+                        <li><span><i class="fas fa-circle"></i></span>Turist Rehberini Seç</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard Area -->
+<section id="dashboard_main_arae" class="section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="dashboard_sidebar">
+                    <div class="dashboard_sidebar_user">
+                        @Html.HiddenFor(p => p.kullanici_id)
+                        <h3>@Model.adsoyad</h3>
+                        <p><a href="tel:+00-123-456-789">@Model.telefon</a></p>
+                        <p><a href="mailto:sherlyn@domain.com">@Model.email</a></p>
+                    </div>
+                    <div class="dashboard_sidebar_user">
+                        <h4>Rehber tarafından mail veya telefon numaranız üzerinden geri dönüş yapılacaktır.</h4>
+                    </div>
+                 
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="dashboard_common_table">
+                    <div class="wallwt_area_top">
+
+
+                        <h3 class="wallet_table_top">Gönderdiğim Formlar</h3>
+                        <div class="wallet_data_table">
+                            <div class="table-responsive-lg table_common_area">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Ad Soyad</th>
+                                            <th>Email</th>
+                                            <th>İlçe</th>
+                                            <th>Kişi Sayısı</th>
+                                            <th>Rehber</th>
+                                            <th>Tarih</th>
+                                            <th>Form Gönderi Tarihi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.kullanici as List<rehbersorgulama.Models.tbl_kullanici>)
+                                        {
+                                            sayi++;
+                                            if (item.durum == true && item.kullanici_id != null)
+                                            {
+                                                <tr>
+                                                    <td>@sayi</td>
+                                                    <td>@item.adsoyad</td>
+                                                    <td>@item.email</td>
+                                                    <td>@item.tbl_ilce.ilce_ad</td>
+                                                    <td>@item.kisi_sayisi</td>
+                                                    <td>@item.tbl_rehber.adsoyad</td>
+                                                    <td>@item.tarih.Value.ToShortDateString()</td>
+                                                    <td>@item.form_tarih</td>
+                                                    
+                                                </tr>
+                                            }
+
+                                        }
+
+                                        
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

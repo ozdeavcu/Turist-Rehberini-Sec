@@ -1,0 +1,1186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="rehber_sorgulamaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="kullanici_dil_detay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dil_id" Type="int" />
+          <Property Name="kullanici_id" Type="int" />
+        </EntityType>
+        <EntityType Name="rehber_dil_detay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dil_id" Type="int" />
+          <Property Name="rehber_id" Type="int" />
+          <Property Name="dil_seviyeid" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="rehber_ilce_detay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rehber_id" Type="int" />
+          <Property Name="ilce_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_aktivite">
+          <Key>
+            <PropertyRef Name="activite_id" />
+          </Key>
+          <Property Name="activite_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilce_id" Type="int" />
+          <Property Name="aktivite_adi" Type="nvarchar" MaxLength="100" />
+          <Property Name="aciklama" Type="nvarchar(max)" />
+          <Property Name="onecikanlar" Type="int" />
+          <Property Name="fotograf" Type="nvarchar" MaxLength="50" />
+          <Property Name="active" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_ayarlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sayfadakilistesayisi" Type="int" />
+          <Property Name="telefonno" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_dil">
+          <Key>
+            <PropertyRef Name="dil_id" />
+          </Key>
+          <Property Name="dil_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dil_ad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_dilseviye">
+          <Key>
+            <PropertyRef Name="dil_seviyeid" />
+          </Key>
+          <Property Name="dil_seviyeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dil_seviye" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_ilce">
+          <Key>
+            <PropertyRef Name="ilce_id" />
+          </Key>
+          <Property Name="ilce_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilce_ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="fotograf" Type="nvarchar(max)" />
+          <Property Name="onecikanlar" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_kullanici">
+          <Key>
+            <PropertyRef Name="kullanici_id" />
+          </Key>
+          <Property Name="kullanici_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullaniciad" Type="nvarchar" MaxLength="50" />
+          <Property Name="adsoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="telefon" Type="nvarchar" MaxLength="15" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="cinsiyet" Type="bit" />
+          <Property Name="yas" Type="int" />
+          <Property Name="dil_no" Type="int" />
+          <Property Name="ilce_no" Type="int" />
+          <Property Name="ulke_no" Type="int" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="kisi_sayisi" Type="int" />
+          <Property Name="ISADMIN" Type="bit" />
+          <Property Name="rehber_id" Type="int" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="aktif" Type="bit" />
+          <Property Name="form_tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_otel">
+          <Key>
+            <PropertyRef Name="otel_id" />
+          </Key>
+          <Property Name="otel_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilce_id" Type="int" />
+          <Property Name="otel_ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="gun" Type="nvarchar" MaxLength="50" />
+          <Property Name="konum" Type="nvarchar" MaxLength="50" />
+          <Property Name="fotograf" Type="nvarchar" MaxLength="50" />
+          <Property Name="active" Type="bit" />
+          <Property Name="onecikanlar" Type="int" />
+          <Property Name="weburl" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tbl_rehber">
+          <Key>
+            <PropertyRef Name="rehber_id" />
+          </Key>
+          <Property Name="rehber_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adsoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="cinsiyet" Type="bit" />
+          <Property Name="baslama_saati" Type="nvarchar" MaxLength="50" />
+          <Property Name="bitis_saati" Type="nvarchar" MaxLength="50" />
+          <Property Name="yas" Type="int" />
+          <Property Name="fiyat" Type="int" />
+          <Property Name="parabirimi" Type="nvarchar" MaxLength="20" />
+          <Property Name="fotograf" Type="nvarchar(max)" />
+          <Property Name="onecikanlar" Type="int" />
+          <Property Name="cv_aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_tarihiyerler">
+          <Key>
+            <PropertyRef Name="tarihi_id" />
+          </Key>
+          <Property Name="tarihi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilce_no" Type="int" />
+          <Property Name="adi" Type="nvarchar" MaxLength="100" />
+          <Property Name="konum" Type="nvarchar" MaxLength="50" />
+          <Property Name="aciklama" Type="nvarchar(max)" />
+          <Property Name="onecikanlar" Type="int" />
+          <Property Name="fotograf" Type="nvarchar" MaxLength="50" />
+          <Property Name="active" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_ulke">
+          <Key>
+            <PropertyRef Name="ulke_id" />
+          </Key>
+          <Property Name="ulke_id" Type="int" Nullable="false" />
+          <Property Name="ulke_ad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'rehber_sorgulama.dbo.vw_rehber_bilgi_getir' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_rehber_bilgi_getir">
+          <Key>
+            <PropertyRef Name="ilce_id" />
+            <PropertyRef Name="rehber_id" />
+          </Key>
+          <Property Name="ilce_id" Type="int" Nullable="false" />
+          <Property Name="rehber_id" Type="int" Nullable="false" />
+          <Property Name="adsoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilce_ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="fotograf" Type="nvarchar(max)" />
+          <Property Name="fiyat" Type="int" />
+          <Property Name="cv_aciklama" Type="nvarchar(max)" />
+          <Property Name="baslama_saati" Type="nvarchar" MaxLength="50" />
+          <Property Name="bitis_saati" Type="nvarchar" MaxLength="50" />
+          <Property Name="yas" Type="int" />
+          <Property Name="onecikanlar" Type="int" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="parabirimi" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'rehber_sorgulama.dbo.vw_rehber_dil' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_rehber_dil">
+          <Key>
+            <PropertyRef Name="dil_id" />
+          </Key>
+          <Property Name="dil_id" Type="int" Nullable="false" />
+          <Property Name="rehber_id" Type="int" />
+          <Property Name="dil_ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="dil_seviye" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'rehber_sorgulama.dbo.vw_rehber_sehir_getir' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_rehber_sehir_getir">
+          <Key>
+            <PropertyRef Name="rehber_id" />
+            <PropertyRef Name="ilce_id" />
+          </Key>
+          <Property Name="rehber_id" Type="int" Nullable="false" />
+          <Property Name="ilce_id" Type="int" Nullable="false" />
+          <Property Name="adsoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="fotograf" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilce_ad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_kullanici_dil_detay_tbl_dil">
+          <End Role="tbl_dil" Type="Self.tbl_dil" Multiplicity="0..1" />
+          <End Role="kullanici_dil_detay" Type="Self.kullanici_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_dil">
+              <PropertyRef Name="dil_id" />
+            </Principal>
+            <Dependent Role="kullanici_dil_detay">
+              <PropertyRef Name="dil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kullanici_dil_detay_tbl_kullanici">
+          <End Role="tbl_kullanici" Type="Self.tbl_kullanici" Multiplicity="0..1" />
+          <End Role="kullanici_dil_detay" Type="Self.kullanici_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_kullanici">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="kullanici_dil_detay">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rehber_dil_detay_tbl_dil">
+          <End Role="tbl_dil" Type="Self.tbl_dil" Multiplicity="0..1" />
+          <End Role="rehber_dil_detay" Type="Self.rehber_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_dil">
+              <PropertyRef Name="dil_id" />
+            </Principal>
+            <Dependent Role="rehber_dil_detay">
+              <PropertyRef Name="dil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rehber_dil_detay_tbl_dilseviye">
+          <End Role="tbl_dilseviye" Type="Self.tbl_dilseviye" Multiplicity="0..1" />
+          <End Role="rehber_dil_detay" Type="Self.rehber_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_dilseviye">
+              <PropertyRef Name="dil_seviyeid" />
+            </Principal>
+            <Dependent Role="rehber_dil_detay">
+              <PropertyRef Name="dil_seviyeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rehber_dil_detay_tbl_rehber1">
+          <End Role="tbl_rehber" Type="Self.tbl_rehber" Multiplicity="0..1" />
+          <End Role="rehber_dil_detay" Type="Self.rehber_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_rehber">
+              <PropertyRef Name="rehber_id" />
+            </Principal>
+            <Dependent Role="rehber_dil_detay">
+              <PropertyRef Name="rehber_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rehber_ilce_detay_tbl_ilce1">
+          <End Role="tbl_ilce" Type="Self.tbl_ilce" Multiplicity="0..1" />
+          <End Role="rehber_ilce_detay" Type="Self.rehber_ilce_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="rehber_ilce_detay">
+              <PropertyRef Name="ilce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rehber_ilce_detay_tbl_rehber1">
+          <End Role="tbl_rehber" Type="Self.tbl_rehber" Multiplicity="0..1" />
+          <End Role="rehber_ilce_detay" Type="Self.rehber_ilce_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_rehber">
+              <PropertyRef Name="rehber_id" />
+            </Principal>
+            <Dependent Role="rehber_ilce_detay">
+              <PropertyRef Name="rehber_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_aktivite_tbl_ilce">
+          <End Role="tbl_ilce" Type="Self.tbl_ilce" Multiplicity="0..1" />
+          <End Role="tbl_aktivite" Type="Self.tbl_aktivite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="tbl_aktivite">
+              <PropertyRef Name="ilce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_kullanici_tbl_dil">
+          <End Role="tbl_dil" Type="Self.tbl_dil" Multiplicity="0..1" />
+          <End Role="tbl_kullanici" Type="Self.tbl_kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_dil">
+              <PropertyRef Name="dil_id" />
+            </Principal>
+            <Dependent Role="tbl_kullanici">
+              <PropertyRef Name="dil_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_kullanici_tbl_ilce">
+          <End Role="tbl_ilce" Type="Self.tbl_ilce" Multiplicity="0..1" />
+          <End Role="tbl_kullanici" Type="Self.tbl_kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="tbl_kullanici">
+              <PropertyRef Name="ilce_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_kullanici_tbl_rehber">
+          <End Role="tbl_rehber" Type="Self.tbl_rehber" Multiplicity="0..1" />
+          <End Role="tbl_kullanici" Type="Self.tbl_kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_rehber">
+              <PropertyRef Name="rehber_id" />
+            </Principal>
+            <Dependent Role="tbl_kullanici">
+              <PropertyRef Name="rehber_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_kullanici_tbl_ulke">
+          <End Role="tbl_ulke" Type="Self.tbl_ulke" Multiplicity="0..1" />
+          <End Role="tbl_kullanici" Type="Self.tbl_kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ulke">
+              <PropertyRef Name="ulke_id" />
+            </Principal>
+            <Dependent Role="tbl_kullanici">
+              <PropertyRef Name="ulke_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_otel_tbl_ilce1">
+          <End Role="tbl_ilce" Type="Self.tbl_ilce" Multiplicity="0..1" />
+          <End Role="tbl_otel" Type="Self.tbl_otel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="tbl_otel">
+              <PropertyRef Name="ilce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_tarihiyerler_tbl_ilce">
+          <End Role="tbl_ilce" Type="Self.tbl_ilce" Multiplicity="0..1" />
+          <End Role="tbl_tarihiyerler" Type="Self.tbl_tarihiyerler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="tbl_tarihiyerler">
+              <PropertyRef Name="ilce_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="rehber_sorgulamaModelStoreContainer">
+          <EntitySet Name="kullanici_dil_detay" EntityType="Self.kullanici_dil_detay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rehber_dil_detay" EntityType="Self.rehber_dil_detay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rehber_ilce_detay" EntityType="Self.rehber_ilce_detay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_aktivite" EntityType="Self.tbl_aktivite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ayarlar" EntityType="Self.tbl_ayarlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_dil" EntityType="Self.tbl_dil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_dilseviye" EntityType="Self.tbl_dilseviye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ilce" EntityType="Self.tbl_ilce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_kullanici" EntityType="Self.tbl_kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_otel" EntityType="Self.tbl_otel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_rehber" EntityType="Self.tbl_rehber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_tarihiyerler" EntityType="Self.tbl_tarihiyerler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ulke" EntityType="Self.tbl_ulke" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_rehber_bilgi_getir" EntityType="Self.vw_rehber_bilgi_getir" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_rehber_bilgi_getir].[ilce_id] AS [ilce_id], 
+    [vw_rehber_bilgi_getir].[rehber_id] AS [rehber_id], 
+    [vw_rehber_bilgi_getir].[adsoyad] AS [adsoyad], 
+    [vw_rehber_bilgi_getir].[ilce_ad] AS [ilce_ad], 
+    [vw_rehber_bilgi_getir].[fotograf] AS [fotograf], 
+    [vw_rehber_bilgi_getir].[fiyat] AS [fiyat], 
+    [vw_rehber_bilgi_getir].[cv_aciklama] AS [cv_aciklama], 
+    [vw_rehber_bilgi_getir].[baslama_saati] AS [baslama_saati], 
+    [vw_rehber_bilgi_getir].[bitis_saati] AS [bitis_saati], 
+    [vw_rehber_bilgi_getir].[yas] AS [yas], 
+    [vw_rehber_bilgi_getir].[onecikanlar] AS [onecikanlar], 
+    [vw_rehber_bilgi_getir].[email] AS [email], 
+    [vw_rehber_bilgi_getir].[parabirimi] AS [parabirimi]
+    FROM [dbo].[vw_rehber_bilgi_getir] AS [vw_rehber_bilgi_getir]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_rehber_dil" EntityType="Self.vw_rehber_dil" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_rehber_dil].[dil_id] AS [dil_id], 
+    [vw_rehber_dil].[rehber_id] AS [rehber_id], 
+    [vw_rehber_dil].[dil_ad] AS [dil_ad], 
+    [vw_rehber_dil].[dil_seviye] AS [dil_seviye]
+    FROM [dbo].[vw_rehber_dil] AS [vw_rehber_dil]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_rehber_sehir_getir" EntityType="Self.vw_rehber_sehir_getir" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_rehber_sehir_getir].[rehber_id] AS [rehber_id], 
+    [vw_rehber_sehir_getir].[ilce_id] AS [ilce_id], 
+    [vw_rehber_sehir_getir].[adsoyad] AS [adsoyad], 
+    [vw_rehber_sehir_getir].[fotograf] AS [fotograf], 
+    [vw_rehber_sehir_getir].[ilce_ad] AS [ilce_ad]
+    FROM [dbo].[vw_rehber_sehir_getir] AS [vw_rehber_sehir_getir]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_kullanici_dil_detay_tbl_dil" Association="Self.FK_kullanici_dil_detay_tbl_dil">
+            <End Role="tbl_dil" EntitySet="tbl_dil" />
+            <End Role="kullanici_dil_detay" EntitySet="kullanici_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kullanici_dil_detay_tbl_kullanici" Association="Self.FK_kullanici_dil_detay_tbl_kullanici">
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+            <End Role="kullanici_dil_detay" EntitySet="kullanici_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rehber_dil_detay_tbl_dil" Association="Self.FK_rehber_dil_detay_tbl_dil">
+            <End Role="tbl_dil" EntitySet="tbl_dil" />
+            <End Role="rehber_dil_detay" EntitySet="rehber_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rehber_dil_detay_tbl_dilseviye" Association="Self.FK_rehber_dil_detay_tbl_dilseviye">
+            <End Role="tbl_dilseviye" EntitySet="tbl_dilseviye" />
+            <End Role="rehber_dil_detay" EntitySet="rehber_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rehber_dil_detay_tbl_rehber1" Association="Self.FK_rehber_dil_detay_tbl_rehber1">
+            <End Role="tbl_rehber" EntitySet="tbl_rehber" />
+            <End Role="rehber_dil_detay" EntitySet="rehber_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rehber_ilce_detay_tbl_ilce1" Association="Self.FK_rehber_ilce_detay_tbl_ilce1">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="rehber_ilce_detay" EntitySet="rehber_ilce_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rehber_ilce_detay_tbl_rehber1" Association="Self.FK_rehber_ilce_detay_tbl_rehber1">
+            <End Role="tbl_rehber" EntitySet="tbl_rehber" />
+            <End Role="rehber_ilce_detay" EntitySet="rehber_ilce_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_aktivite_tbl_ilce" Association="Self.FK_tbl_aktivite_tbl_ilce">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="tbl_aktivite" EntitySet="tbl_aktivite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_kullanici_tbl_dil" Association="Self.FK_tbl_kullanici_tbl_dil">
+            <End Role="tbl_dil" EntitySet="tbl_dil" />
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_kullanici_tbl_ilce" Association="Self.FK_tbl_kullanici_tbl_ilce">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_kullanici_tbl_rehber" Association="Self.FK_tbl_kullanici_tbl_rehber">
+            <End Role="tbl_rehber" EntitySet="tbl_rehber" />
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_kullanici_tbl_ulke" Association="Self.FK_tbl_kullanici_tbl_ulke">
+            <End Role="tbl_ulke" EntitySet="tbl_ulke" />
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_otel_tbl_ilce1" Association="Self.FK_tbl_otel_tbl_ilce1">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="tbl_otel" EntitySet="tbl_otel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_tarihiyerler_tbl_ilce" Association="Self.FK_tbl_tarihiyerler_tbl_ilce">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="tbl_tarihiyerler" EntitySet="tbl_tarihiyerler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="rehber_sorgulamaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="rehber_sorgulamaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="kullanici_dil_detay" EntityType="rehber_sorgulamaModel.kullanici_dil_detay" />
+          <EntitySet Name="rehber_ilce_detay" EntityType="rehber_sorgulamaModel.rehber_ilce_detay" />
+          <EntitySet Name="sysdiagrams" EntityType="rehber_sorgulamaModel.sysdiagrams" />
+          <EntitySet Name="tbl_aktivite" EntityType="rehber_sorgulamaModel.tbl_aktivite" />
+          <EntitySet Name="tbl_ayarlar" EntityType="rehber_sorgulamaModel.tbl_ayarlar" />
+          <EntitySet Name="tbl_dil" EntityType="rehber_sorgulamaModel.tbl_dil" />
+          <EntitySet Name="tbl_dilseviye" EntityType="rehber_sorgulamaModel.tbl_dilseviye" />
+          <EntitySet Name="tbl_ilce" EntityType="rehber_sorgulamaModel.tbl_ilce" />
+          <EntitySet Name="tbl_otel" EntityType="rehber_sorgulamaModel.tbl_otel" />
+          <EntitySet Name="tbl_tarihiyerler" EntityType="rehber_sorgulamaModel.tbl_tarihiyerler" />
+          <EntitySet Name="tbl_ulke" EntityType="rehber_sorgulamaModel.tbl_ulke" />
+          <EntitySet Name="vw_rehber_dil" EntityType="rehber_sorgulamaModel.vw_rehber_dil" />
+          <EntitySet Name="vw_rehber_sehir_getir" EntityType="rehber_sorgulamaModel.vw_rehber_sehir_getir" />
+          <AssociationSet Name="FK_kullanici_dil_detay_tbl_dil" Association="rehber_sorgulamaModel.FK_kullanici_dil_detay_tbl_dil">
+            <End Role="tbl_dil" EntitySet="tbl_dil" />
+            <End Role="kullanici_dil_detay" EntitySet="kullanici_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rehber_ilce_detay_tbl_ilce1" Association="rehber_sorgulamaModel.FK_rehber_ilce_detay_tbl_ilce1">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="rehber_ilce_detay" EntitySet="rehber_ilce_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_aktivite_tbl_ilce" Association="rehber_sorgulamaModel.FK_tbl_aktivite_tbl_ilce">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="tbl_aktivite" EntitySet="tbl_aktivite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_otel_tbl_ilce1" Association="rehber_sorgulamaModel.FK_tbl_otel_tbl_ilce1">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="tbl_otel" EntitySet="tbl_otel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_tarihiyerler_tbl_ilce" Association="rehber_sorgulamaModel.FK_tbl_tarihiyerler_tbl_ilce">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="tbl_tarihiyerler" EntitySet="tbl_tarihiyerler" />
+          </AssociationSet>
+          <EntitySet Name="tbl_rehber" EntityType="rehber_sorgulamaModel.tbl_rehber" />
+          <AssociationSet Name="FK_rehber_ilce_detay_tbl_rehber1" Association="rehber_sorgulamaModel.FK_rehber_ilce_detay_tbl_rehber1">
+            <End Role="tbl_rehber" EntitySet="tbl_rehber" />
+            <End Role="rehber_ilce_detay" EntitySet="rehber_ilce_detay" />
+          </AssociationSet>
+          <EntitySet Name="vw_rehber_bilgi_getir" EntityType="rehber_sorgulamaModel.vw_rehber_bilgi_getir" />
+          <EntitySet Name="rehber_dil_detay" EntityType="rehber_sorgulamaModel.rehber_dil_detay" />
+          <AssociationSet Name="FK_rehber_dil_detay_tbl_dil" Association="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_dil">
+            <End Role="tbl_dil" EntitySet="tbl_dil" />
+            <End Role="rehber_dil_detay" EntitySet="rehber_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rehber_dil_detay_tbl_dilseviye" Association="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_dilseviye">
+            <End Role="tbl_dilseviye" EntitySet="tbl_dilseviye" />
+            <End Role="rehber_dil_detay" EntitySet="rehber_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rehber_dil_detay_tbl_rehber1" Association="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_rehber1">
+            <End Role="tbl_rehber" EntitySet="tbl_rehber" />
+            <End Role="rehber_dil_detay" EntitySet="rehber_dil_detay" />
+          </AssociationSet>
+          <EntitySet Name="tbl_kullanici" EntityType="rehber_sorgulamaModel.tbl_kullanici" />
+          <AssociationSet Name="FK_kullanici_dil_detay_tbl_kullanici" Association="rehber_sorgulamaModel.FK_kullanici_dil_detay_tbl_kullanici">
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+            <End Role="kullanici_dil_detay" EntitySet="kullanici_dil_detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_kullanici_tbl_dil" Association="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_dil">
+            <End Role="tbl_dil" EntitySet="tbl_dil" />
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_kullanici_tbl_ilce" Association="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_ilce">
+            <End Role="tbl_ilce" EntitySet="tbl_ilce" />
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_kullanici_tbl_rehber" Association="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_rehber">
+            <End Role="tbl_rehber" EntitySet="tbl_rehber" />
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_kullanici_tbl_ulke" Association="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_ulke">
+            <End Role="tbl_ulke" EntitySet="tbl_ulke" />
+            <End Role="tbl_kullanici" EntitySet="tbl_kullanici" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="kullanici_dil_detay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dil_id" Type="Int32" />
+          <Property Name="kullanici_id" Type="Int32" />
+          <NavigationProperty Name="tbl_dil" Relationship="rehber_sorgulamaModel.FK_kullanici_dil_detay_tbl_dil" FromRole="kullanici_dil_detay" ToRole="tbl_dil" />
+          <NavigationProperty Name="tbl_kullanici" Relationship="rehber_sorgulamaModel.FK_kullanici_dil_detay_tbl_kullanici" FromRole="kullanici_dil_detay" ToRole="tbl_kullanici" />
+        </EntityType>
+        <EntityType Name="rehber_ilce_detay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rehber_id" Type="Int32" />
+          <Property Name="ilce_id" Type="Int32" />
+          <NavigationProperty Name="tbl_ilce" Relationship="rehber_sorgulamaModel.FK_rehber_ilce_detay_tbl_ilce1" FromRole="rehber_ilce_detay" ToRole="tbl_ilce" />
+          <NavigationProperty Name="tbl_rehber" Relationship="rehber_sorgulamaModel.FK_rehber_ilce_detay_tbl_rehber1" FromRole="rehber_ilce_detay" ToRole="tbl_rehber" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_aktivite">
+          <Key>
+            <PropertyRef Name="activite_id" />
+          </Key>
+          <Property Name="activite_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilce_id" Type="Int32" />
+          <Property Name="aktivite_adi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="onecikanlar" Type="Int32" />
+          <Property Name="fotograf" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Boolean" />
+          <NavigationProperty Name="tbl_ilce" Relationship="rehber_sorgulamaModel.FK_tbl_aktivite_tbl_ilce" FromRole="tbl_aktivite" ToRole="tbl_ilce" />
+        </EntityType>
+        <EntityType Name="tbl_ayarlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sayfadakilistesayisi" Type="Int32" />
+          <Property Name="telefonno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_dil">
+          <Key>
+            <PropertyRef Name="dil_id" />
+          </Key>
+          <Property Name="dil_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dil_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="kullanici_dil_detay" Relationship="rehber_sorgulamaModel.FK_kullanici_dil_detay_tbl_dil" FromRole="tbl_dil" ToRole="kullanici_dil_detay" />
+          <NavigationProperty Name="rehber_dil_detay" Relationship="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_dil" FromRole="tbl_dil" ToRole="rehber_dil_detay" />
+          <NavigationProperty Name="tbl_kullanici" Relationship="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_dil" FromRole="tbl_dil" ToRole="tbl_kullanici" />
+        </EntityType>
+        <EntityType Name="tbl_dilseviye">
+          <Key>
+            <PropertyRef Name="dil_seviyeid" />
+          </Key>
+          <Property Name="dil_seviyeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dil_seviye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="rehber_dil_detay" Relationship="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_dilseviye" FromRole="tbl_dilseviye" ToRole="rehber_dil_detay" />
+        </EntityType>
+        <EntityType Name="tbl_ilce">
+          <Key>
+            <PropertyRef Name="ilce_id" />
+          </Key>
+          <Property Name="ilce_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilce_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fotograf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="onecikanlar" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <NavigationProperty Name="rehber_ilce_detay" Relationship="rehber_sorgulamaModel.FK_rehber_ilce_detay_tbl_ilce1" FromRole="tbl_ilce" ToRole="rehber_ilce_detay" />
+          <NavigationProperty Name="tbl_aktivite" Relationship="rehber_sorgulamaModel.FK_tbl_aktivite_tbl_ilce" FromRole="tbl_ilce" ToRole="tbl_aktivite" />
+          <NavigationProperty Name="tbl_otel" Relationship="rehber_sorgulamaModel.FK_tbl_otel_tbl_ilce1" FromRole="tbl_ilce" ToRole="tbl_otel" />
+          <NavigationProperty Name="tbl_tarihiyerler" Relationship="rehber_sorgulamaModel.FK_tbl_tarihiyerler_tbl_ilce" FromRole="tbl_ilce" ToRole="tbl_tarihiyerler" />
+          <NavigationProperty Name="tbl_kullanici" Relationship="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_ilce" FromRole="tbl_ilce" ToRole="tbl_kullanici" />
+        </EntityType>
+        <EntityType Name="tbl_otel">
+          <Key>
+            <PropertyRef Name="otel_id" />
+          </Key>
+          <Property Name="otel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilce_id" Type="Int32" />
+          <Property Name="otel_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="konum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fotograf" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="onecikanlar" Type="Int32" />
+          <Property Name="weburl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_ilce" Relationship="rehber_sorgulamaModel.FK_tbl_otel_tbl_ilce1" FromRole="tbl_otel" ToRole="tbl_ilce" />
+        </EntityType>
+        <EntityType Name="tbl_tarihiyerler">
+          <Key>
+            <PropertyRef Name="tarihi_id" />
+          </Key>
+          <Property Name="tarihi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilce_no" Type="Int32" />
+          <Property Name="adi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="konum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="onecikanlar" Type="Int32" />
+          <Property Name="fotograf" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Boolean" />
+          <NavigationProperty Name="tbl_ilce" Relationship="rehber_sorgulamaModel.FK_tbl_tarihiyerler_tbl_ilce" FromRole="tbl_tarihiyerler" ToRole="tbl_ilce" />
+        </EntityType>
+        <EntityType Name="tbl_ulke">
+          <Key>
+            <PropertyRef Name="ulke_id" />
+          </Key>
+          <Property Name="ulke_id" Type="Int32" Nullable="false" />
+          <Property Name="ulke_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_kullanici" Relationship="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_ulke" FromRole="tbl_ulke" ToRole="tbl_kullanici" />
+        </EntityType>
+        <EntityType Name="vw_rehber_dil">
+          <Key>
+            <PropertyRef Name="dil_id" />
+          </Key>
+          <Property Name="dil_id" Type="Int32" Nullable="false" />
+          <Property Name="rehber_id" Type="Int32" />
+          <Property Name="dil_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dil_seviye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_rehber_sehir_getir">
+          <Key>
+            <PropertyRef Name="rehber_id" />
+            <PropertyRef Name="ilce_id" />
+          </Key>
+          <Property Name="rehber_id" Type="Int32" Nullable="false" />
+          <Property Name="ilce_id" Type="Int32" Nullable="false" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fotograf" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilce_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_kullanici_dil_detay_tbl_dil">
+          <End Type="rehber_sorgulamaModel.tbl_dil" Role="tbl_dil" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.kullanici_dil_detay" Role="kullanici_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_dil">
+              <PropertyRef Name="dil_id" />
+            </Principal>
+            <Dependent Role="kullanici_dil_detay">
+              <PropertyRef Name="dil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rehber_ilce_detay_tbl_ilce1">
+          <End Type="rehber_sorgulamaModel.tbl_ilce" Role="tbl_ilce" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.rehber_ilce_detay" Role="rehber_ilce_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="rehber_ilce_detay">
+              <PropertyRef Name="ilce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_aktivite_tbl_ilce">
+          <End Type="rehber_sorgulamaModel.tbl_ilce" Role="tbl_ilce" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.tbl_aktivite" Role="tbl_aktivite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="tbl_aktivite">
+              <PropertyRef Name="ilce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_otel_tbl_ilce1">
+          <End Type="rehber_sorgulamaModel.tbl_ilce" Role="tbl_ilce" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.tbl_otel" Role="tbl_otel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="tbl_otel">
+              <PropertyRef Name="ilce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_tarihiyerler_tbl_ilce">
+          <End Type="rehber_sorgulamaModel.tbl_ilce" Role="tbl_ilce" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.tbl_tarihiyerler" Role="tbl_tarihiyerler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="tbl_tarihiyerler">
+              <PropertyRef Name="ilce_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_rehber">
+          <Key>
+            <PropertyRef Name="rehber_id" />
+          </Key>
+          <Property Name="rehber_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cinsiyet" Type="Boolean" />
+          <Property Name="baslama_saati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bitis_saati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yas" Type="Int16" />
+          <Property Name="fiyat" Type="Int32" />
+          <Property Name="parabirimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fotograf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="onecikanlar" Type="Int32" />
+          <Property Name="cv_aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="rehber_ilce_detay" Relationship="rehber_sorgulamaModel.FK_rehber_ilce_detay_tbl_rehber1" FromRole="tbl_rehber" ToRole="rehber_ilce_detay" />
+          <NavigationProperty Name="rehber_dil_detay" Relationship="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_rehber1" FromRole="tbl_rehber" ToRole="rehber_dil_detay" />
+          <NavigationProperty Name="tbl_kullanici" Relationship="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_rehber" FromRole="tbl_rehber" ToRole="tbl_kullanici" />
+        </EntityType>
+        <Association Name="FK_rehber_ilce_detay_tbl_rehber1">
+          <End Type="rehber_sorgulamaModel.tbl_rehber" Role="tbl_rehber" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.rehber_ilce_detay" Role="rehber_ilce_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_rehber">
+              <PropertyRef Name="rehber_id" />
+            </Principal>
+            <Dependent Role="rehber_ilce_detay">
+              <PropertyRef Name="rehber_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vw_rehber_bilgi_getir">
+          <Key>
+            <PropertyRef Name="ilce_id" />
+            <PropertyRef Name="rehber_id" />
+          </Key>
+          <Property Name="ilce_id" Type="Int32" Nullable="false" />
+          <Property Name="rehber_id" Type="Int32" Nullable="false" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilce_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fotograf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fiyat" Type="Int32" />
+          <Property Name="cv_aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="baslama_saati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bitis_saati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yas" Type="Int32" />
+          <Property Name="onecikanlar" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parabirimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rehber_dil_detay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dil_id" Type="Int32" />
+          <Property Name="rehber_id" Type="Int32" />
+          <Property Name="dil_seviyeid" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <NavigationProperty Name="tbl_dil" Relationship="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_dil" FromRole="rehber_dil_detay" ToRole="tbl_dil" />
+          <NavigationProperty Name="tbl_dilseviye" Relationship="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_dilseviye" FromRole="rehber_dil_detay" ToRole="tbl_dilseviye" />
+          <NavigationProperty Name="tbl_rehber" Relationship="rehber_sorgulamaModel.FK_rehber_dil_detay_tbl_rehber1" FromRole="rehber_dil_detay" ToRole="tbl_rehber" />
+        </EntityType>
+        <Association Name="FK_rehber_dil_detay_tbl_dil">
+          <End Type="rehber_sorgulamaModel.tbl_dil" Role="tbl_dil" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.rehber_dil_detay" Role="rehber_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_dil">
+              <PropertyRef Name="dil_id" />
+            </Principal>
+            <Dependent Role="rehber_dil_detay">
+              <PropertyRef Name="dil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rehber_dil_detay_tbl_dilseviye">
+          <End Type="rehber_sorgulamaModel.tbl_dilseviye" Role="tbl_dilseviye" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.rehber_dil_detay" Role="rehber_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_dilseviye">
+              <PropertyRef Name="dil_seviyeid" />
+            </Principal>
+            <Dependent Role="rehber_dil_detay">
+              <PropertyRef Name="dil_seviyeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rehber_dil_detay_tbl_rehber1">
+          <End Type="rehber_sorgulamaModel.tbl_rehber" Role="tbl_rehber" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.rehber_dil_detay" Role="rehber_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_rehber">
+              <PropertyRef Name="rehber_id" />
+            </Principal>
+            <Dependent Role="rehber_dil_detay">
+              <PropertyRef Name="rehber_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_kullanici">
+          <Key>
+            <PropertyRef Name="kullanici_id" />
+          </Key>
+          <Property Name="kullanici_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullaniciad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cinsiyet" Type="Boolean" />
+          <Property Name="yas" Type="Int32" />
+          <Property Name="dil_no" Type="Int32" />
+          <Property Name="ilce_no" Type="Int32" />
+          <Property Name="ulke_no" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="kisi_sayisi" Type="Int32" />
+          <Property Name="ISADMIN" Type="Boolean" />
+          <Property Name="rehber_id" Type="Int32" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="aktif" Type="Boolean" />
+          <Property Name="form_tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="kullanici_dil_detay" Relationship="rehber_sorgulamaModel.FK_kullanici_dil_detay_tbl_kullanici" FromRole="tbl_kullanici" ToRole="kullanici_dil_detay" />
+          <NavigationProperty Name="tbl_dil" Relationship="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_dil" FromRole="tbl_kullanici" ToRole="tbl_dil" />
+          <NavigationProperty Name="tbl_ilce" Relationship="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_ilce" FromRole="tbl_kullanici" ToRole="tbl_ilce" />
+          <NavigationProperty Name="tbl_rehber" Relationship="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_rehber" FromRole="tbl_kullanici" ToRole="tbl_rehber" />
+          <NavigationProperty Name="tbl_ulke" Relationship="rehber_sorgulamaModel.FK_tbl_kullanici_tbl_ulke" FromRole="tbl_kullanici" ToRole="tbl_ulke" />
+        </EntityType>
+        <Association Name="FK_kullanici_dil_detay_tbl_kullanici">
+          <End Type="rehber_sorgulamaModel.tbl_kullanici" Role="tbl_kullanici" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.kullanici_dil_detay" Role="kullanici_dil_detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_kullanici">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="kullanici_dil_detay">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_kullanici_tbl_dil">
+          <End Type="rehber_sorgulamaModel.tbl_dil" Role="tbl_dil" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.tbl_kullanici" Role="tbl_kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_dil">
+              <PropertyRef Name="dil_id" />
+            </Principal>
+            <Dependent Role="tbl_kullanici">
+              <PropertyRef Name="dil_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_kullanici_tbl_ilce">
+          <End Type="rehber_sorgulamaModel.tbl_ilce" Role="tbl_ilce" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.tbl_kullanici" Role="tbl_kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="tbl_kullanici">
+              <PropertyRef Name="ilce_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_kullanici_tbl_rehber">
+          <End Type="rehber_sorgulamaModel.tbl_rehber" Role="tbl_rehber" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.tbl_kullanici" Role="tbl_kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_rehber">
+              <PropertyRef Name="rehber_id" />
+            </Principal>
+            <Dependent Role="tbl_kullanici">
+              <PropertyRef Name="rehber_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_kullanici_tbl_ulke">
+          <End Type="rehber_sorgulamaModel.tbl_ulke" Role="tbl_ulke" Multiplicity="0..1" />
+          <End Type="rehber_sorgulamaModel.tbl_kullanici" Role="tbl_kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ulke">
+              <PropertyRef Name="ulke_id" />
+            </Principal>
+            <Dependent Role="tbl_kullanici">
+              <PropertyRef Name="ulke_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="rehber_sorgulamaModelStoreContainer" CdmEntityContainer="rehber_sorgulamaEntities">
+          <EntitySetMapping Name="kullanici_dil_detay">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.kullanici_dil_detay">
+              <MappingFragment StoreEntitySet="kullanici_dil_detay">
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+                <ScalarProperty Name="dil_id" ColumnName="dil_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rehber_ilce_detay">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.rehber_ilce_detay">
+              <MappingFragment StoreEntitySet="rehber_ilce_detay">
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="rehber_id" ColumnName="rehber_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_aktivite">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_aktivite">
+              <MappingFragment StoreEntitySet="tbl_aktivite">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="fotograf" ColumnName="fotograf" />
+                <ScalarProperty Name="onecikanlar" ColumnName="onecikanlar" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="aktivite_adi" ColumnName="aktivite_adi" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="activite_id" ColumnName="activite_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ayarlar">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_ayarlar">
+              <MappingFragment StoreEntitySet="tbl_ayarlar">
+                <ScalarProperty Name="telefonno" ColumnName="telefonno" />
+                <ScalarProperty Name="sayfadakilistesayisi" ColumnName="sayfadakilistesayisi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_dil">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_dil">
+              <MappingFragment StoreEntitySet="tbl_dil">
+                <ScalarProperty Name="dil_ad" ColumnName="dil_ad" />
+                <ScalarProperty Name="dil_id" ColumnName="dil_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_dilseviye">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_dilseviye">
+              <MappingFragment StoreEntitySet="tbl_dilseviye">
+                <ScalarProperty Name="dil_seviye" ColumnName="dil_seviye" />
+                <ScalarProperty Name="dil_seviyeid" ColumnName="dil_seviyeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ilce">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_ilce">
+              <MappingFragment StoreEntitySet="tbl_ilce">
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="onecikanlar" ColumnName="onecikanlar" />
+                <ScalarProperty Name="fotograf" ColumnName="fotograf" />
+                <ScalarProperty Name="ilce_ad" ColumnName="ilce_ad" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_otel">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_otel">
+              <MappingFragment StoreEntitySet="tbl_otel">
+                <ScalarProperty Name="weburl" ColumnName="weburl" />
+                <ScalarProperty Name="onecikanlar" ColumnName="onecikanlar" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="fotograf" ColumnName="fotograf" />
+                <ScalarProperty Name="konum" ColumnName="konum" />
+                <ScalarProperty Name="gun" ColumnName="gun" />
+                <ScalarProperty Name="otel_ad" ColumnName="otel_ad" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="otel_id" ColumnName="otel_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_tarihiyerler">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_tarihiyerler">
+              <MappingFragment StoreEntitySet="tbl_tarihiyerler">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="fotograf" ColumnName="fotograf" />
+                <ScalarProperty Name="onecikanlar" ColumnName="onecikanlar" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="konum" ColumnName="konum" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="ilce_no" ColumnName="ilce_no" />
+                <ScalarProperty Name="tarihi_id" ColumnName="tarihi_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ulke">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_ulke">
+              <MappingFragment StoreEntitySet="tbl_ulke">
+                <ScalarProperty Name="ulke_ad" ColumnName="ulke_ad" />
+                <ScalarProperty Name="ulke_id" ColumnName="ulke_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_rehber_dil">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.vw_rehber_dil">
+              <MappingFragment StoreEntitySet="vw_rehber_dil">
+                <ScalarProperty Name="dil_seviye" ColumnName="dil_seviye" />
+                <ScalarProperty Name="dil_ad" ColumnName="dil_ad" />
+                <ScalarProperty Name="rehber_id" ColumnName="rehber_id" />
+                <ScalarProperty Name="dil_id" ColumnName="dil_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_rehber_sehir_getir">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.vw_rehber_sehir_getir">
+              <MappingFragment StoreEntitySet="vw_rehber_sehir_getir">
+                <ScalarProperty Name="ilce_ad" ColumnName="ilce_ad" />
+                <ScalarProperty Name="fotograf" ColumnName="fotograf" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="rehber_id" ColumnName="rehber_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_rehber">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_rehber">
+              <MappingFragment StoreEntitySet="tbl_rehber">
+                <ScalarProperty Name="cv_aciklama" ColumnName="cv_aciklama" />
+                <ScalarProperty Name="onecikanlar" ColumnName="onecikanlar" />
+                <ScalarProperty Name="fotograf" ColumnName="fotograf" />
+                <ScalarProperty Name="parabirimi" ColumnName="parabirimi" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="yas" ColumnName="yas" />
+                <ScalarProperty Name="bitis_saati" ColumnName="bitis_saati" />
+                <ScalarProperty Name="baslama_saati" ColumnName="baslama_saati" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="rehber_id" ColumnName="rehber_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_rehber_bilgi_getir">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.vw_rehber_bilgi_getir">
+              <MappingFragment StoreEntitySet="vw_rehber_bilgi_getir">
+                <ScalarProperty Name="parabirimi" ColumnName="parabirimi" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="onecikanlar" ColumnName="onecikanlar" />
+                <ScalarProperty Name="yas" ColumnName="yas" />
+                <ScalarProperty Name="bitis_saati" ColumnName="bitis_saati" />
+                <ScalarProperty Name="baslama_saati" ColumnName="baslama_saati" />
+                <ScalarProperty Name="cv_aciklama" ColumnName="cv_aciklama" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="fotograf" ColumnName="fotograf" />
+                <ScalarProperty Name="ilce_ad" ColumnName="ilce_ad" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="rehber_id" ColumnName="rehber_id" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rehber_dil_detay">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.rehber_dil_detay">
+              <MappingFragment StoreEntitySet="rehber_dil_detay">
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="dil_seviyeid" ColumnName="dil_seviyeid" />
+                <ScalarProperty Name="rehber_id" ColumnName="rehber_id" />
+                <ScalarProperty Name="dil_id" ColumnName="dil_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_kullanici">
+            <EntityTypeMapping TypeName="rehber_sorgulamaModel.tbl_kullanici">
+              <MappingFragment StoreEntitySet="tbl_kullanici">
+                <ScalarProperty Name="form_tarih" ColumnName="form_tarih" />
+                <ScalarProperty Name="aktif" ColumnName="aktif" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="rehber_id" ColumnName="rehber_id" />
+                <ScalarProperty Name="ISADMIN" ColumnName="ISADMIN" />
+                <ScalarProperty Name="kisi_sayisi" ColumnName="kisi_sayisi" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="ulke_no" ColumnName="ulke_no" />
+                <ScalarProperty Name="ilce_no" ColumnName="ilce_no" />
+                <ScalarProperty Name="dil_no" ColumnName="dil_no" />
+                <ScalarProperty Name="yas" ColumnName="yas" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="kullaniciad" ColumnName="kullaniciad" />
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

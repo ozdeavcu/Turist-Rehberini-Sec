@@ -1,0 +1,64 @@
+﻿@using rehbersorgulama.Models
+@model rehber_dil_detay
+@{
+    ViewBag.Title = "dilGuncelle";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+}
+<section class="section">
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size:35px;">DİL EKLE</h5>
+                    <!-- General Form Elements -->
+                    <form method="post" name="myform" class="form-group" action="~/Admin/dilGuncelle">
+
+                        @Html.HiddenFor(p=>p.rehber_id)
+                        <div class="col-sm-10">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">DİL</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example" name="dil_id">
+                                        @foreach (var item in ViewBag.dil as List<tbl_dil>)
+                                        {
+
+                                            <option value="@item.dil_id">@item.dil_ad</option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Seviye</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example" name="dil_seviyeid">
+                                        @foreach (var item in ViewBag.dilseviye as List<tbl_dilseviye>)
+                                        {
+                                            
+                                            <option value="@item.dil_seviyeid">@item.dil_seviye</option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">DİL GÜNCELLE</button>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="~/Admin/dil_listele/@ViewBag.rehberid" class="btn btn-outline-danger">DİL LİSTESİ İÇİN GERİ DÖN</a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+

@@ -1,0 +1,100 @@
+﻿@model rehbersorgulama.Models.vw_rehber_bilgi_getir
+@{
+    ViewBag.Title = "rehber_detay";
+    Layout = "~/Views/Shared/default_layout.cshtml";
+}
+<style>
+    #common_banner {
+        background-image: url('/Content/img/banner/banner5.png');
+        padding: 200px 0 130px 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<!-- Common Banner Area -->
+<section id="common_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="common_bannner_text">
+                    <h2>@Model.ilce_ad Rehberi</h2>
+                    <ul>
+                        <li><a href="index.html">Anasayfa</a></li>
+                        <li><span><i class="fas fa-circle"></i></span>@Model.ilce_ad Rehberleri</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tour Booking Submission Areas -->
+<section id="tour_booking_submission" class="section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="tou_booking_form_Wrapper">
+                    <div class="tour_booking_form_box mb-4">
+                        <div class="booking_success_arae">
+                            <div class="booking_success_img">
+                                <img src="/Content/img/icon/right.png" alt="img" style="width:30px;">
+                            </div>
+                            <div class="booking_success_text">
+                                <h3>@Model.adsoyad</h3>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking_tour_form">
+                        <h3 class="heading_theme">Bilgileri</h3>
+                        <div class="tour_booking_form_box">
+                            <div class="your_info_arae">
+                                <ul>
+                                    <li>
+                                        <span class="name_first">Adı Soyadı:</span> <span class="last_name">@Model.adsoyad</span>
+                                    </li>
+                                    <li>
+                                        <span class="name_first">Yaş:</span> <span class="last_name">@Model.yas</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="name_first">Çalışma Saati</span> <span class="last_name">@Model.baslama_saati - @Model.bitis_saati</span>
+                                    </li>
+                                    <li>
+                                        <span class="name_first">Fiyat:</span> <span class="last_name">@Model.fiyat @Model.parabirimi</span>
+                                    </li>
+                                    <li>
+                                        <span class="name_first">Bildiği Diller:</span><span class="last_name">
+                                            @foreach (var item in ViewBag.diller as List<rehbersorgulama.Models.vw_rehber_dil>)
+                                            {
+                                                <table border="0">
+                                                    <tr>
+                                                        <td>@item.dil_ad -- </td>
+                                                        <td> @item.dil_seviye</td>
+
+                                                    </tr>
+                                                </table>
+                                            }
+                                        </span>
+                                    </li>
+                                    
+                                    <li>
+                                        <span class="name_first">Açıklama:</span> <span class="last_name">
+                                            @Model.cv_aciklama
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="vendor_img">
+                    <img src="@Model.fotograf" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
